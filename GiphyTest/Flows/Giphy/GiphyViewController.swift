@@ -41,7 +41,7 @@ class GiphyViewController: UIViewController {
     }
     
     //! Network status
-    var reachability = Reachability()
+    var reachability = try? Reachability()
     
     //! Threshold search timer
     var searchTimer:Timer?
@@ -95,7 +95,7 @@ extension GiphyViewController {
     
     func startSearch() {
         //! Depend on connection status search online or in cache
-        if reachability?.connection == Reachability.Connection.none {
+        if reachability?.connection == Reachability.Connection.unavailable {
             search?.find(searchKey: searchBar.text ?? "", onlyFromCache: true)
         } else {
             search?.find(searchKey: searchBar.text ?? "")
@@ -130,7 +130,7 @@ extension GiphyViewController {
     //! TODO: Add locolized strings
     //! Update nav bar button
     func updateNetworkStatusUI() {
-        if reachability?.connection == Reachability.Connection.none {
+        if reachability?.connection == Reachability.Connection.unavailable {
             navBarButton.title = "Off Line"
         } else {
             navBarButton.title = "On Line"
