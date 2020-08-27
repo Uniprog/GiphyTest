@@ -13,10 +13,6 @@ class GiphyImageCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: FLAnimatedImageView!
     
-    deinit {
-        print("deinit " + String(describing: self))
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         //! Clear previous image

@@ -26,7 +26,6 @@ extension Object {
     }
     
     class func safeCreateObject<T: Object, K>(primaryKey: K, _ realm:Realm = Realm.instance) -> T {
-        print("\n+++safeCreateObject \(T.self), primaryKey = \(primaryKey) isInWriteTransaction = \(realm.isInWriteTransaction)")
         var obj:T
         //! Create
         if realm.isInWriteTransaction {
@@ -41,7 +40,6 @@ extension Object {
     }
     
     class func safeCreateObject<T: Object>(_ value: Any = [:], _ realm:Realm = Realm.instance) -> T {
-        print("\n+++safeCreateObject \(T.self), isInWriteTransaction = \(realm.isInWriteTransaction)")
         var obj:T
         //! Create
         if realm.isInWriteTransaction {
